@@ -55,10 +55,14 @@ CREATE TABLE pedidoItens (
     ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
---Dados de Teste
 
-INSERT INTO clientes (nome, email, senha) VALUES('Administrador', 'admin@teste.com', '$2a$11$BGIoqkaa3kPnFnxzO7p0E./QGbZ1BUfO4ccGPkk4O3EgtBK203U3G');
+INSERT INTO clientes (nome, email, senha) VALUES ('Administrador', 'admin@teste.com', '$2a$11$BGIoqkaa3kPnFnxzO7p0E./QGbZ1BUfO4ccGPkk4O3EgtBK203U3G');
 
+INSERT INTO categorias (categoria) VALUES ('Geral');
+
+INSERT INTO produtos (idCategoria, produto, preco, quantidade, descricao, foto) VALUES (1, 'Produto A', 10.50, 1, '', '');
+INSERT INTO produtos (idCategoria, produto, preco, quantidade, descricao, foto) VALUES (1, 'Produto B', 5.40, 1, '', '');
+INSERT INTO produtos (idCategoria, produto, preco, quantidade, descricao, foto) VALUES (1, 'Produto C', 9.99, 1, '', '');
 
 
 

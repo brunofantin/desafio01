@@ -1,28 +1,15 @@
-package teste.brasil.prev.entities;
+package teste.brasil.prev.to;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import teste.brasil.prev.entities.Cliente;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+public class ClienteTO {
 
-@Entity
-@Table(name = "clientes")
-public class Cliente {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idcliente")
 	private Integer idCliente;
 	
 	private String nome;
 	
 	private String email;
 	
-	@JsonIgnore
 	private String senha;
 	
 	private String rua;
@@ -107,4 +94,19 @@ public class Cliente {
 		this.estado = estado;
 	}
 	
+	public Cliente toCliente() {
+		Cliente cli = new Cliente();
+		
+		cli.setIdCliente(idCliente);
+		cli.setNome(nome);
+		cli.setEmail(email);
+		cli.setSenha(senha);
+		cli.setRua(rua);
+		cli.setCidade(cidade);
+		cli.setBairro(bairro);
+		cli.setCep(cep);
+		cli.setEstado(estado);
+		
+		return cli;
+	}
 }
