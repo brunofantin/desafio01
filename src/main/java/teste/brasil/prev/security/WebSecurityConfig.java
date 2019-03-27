@@ -25,16 +25,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.csrf().disable()
 	
 			.authorizeRequests()
+			
 			.antMatchers("/login").permitAll()
 			.antMatchers("/api/clientes/**").hasAuthority("ADMIN")
 			.antMatchers("/api/categorias/**").hasAuthority("ADMIN")
 			.antMatchers("/api/produtos/**").hasAuthority("ADMIN")
-			.anyRequest().authenticated()
+			.antMatchers("/api/pedidos/**").hasAuthority("USER")
+			
 			.and()
 			
 			.addFilterBefore(new LoginFilter("/login", authenticationManager()), UsernamePasswordAuthenticationFilter.class)
 			.addFilterBefore(new AuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
-		
 	}
 
 	@Override

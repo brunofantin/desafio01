@@ -18,7 +18,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import teste.brasil.prev.entities.Cliente;
+import teste.brasil.prev.to.ClienteTO;
 
 public class LoginFilter extends AbstractAuthenticationProcessingFilter {
 
@@ -30,7 +30,7 @@ public class LoginFilter extends AbstractAuthenticationProcessingFilter {
 
 	@Override
 	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException, ServletException {
-		Cliente credentials = new ObjectMapper().readValue(request.getInputStream(), Cliente.class);
+		ClienteTO credentials = new ObjectMapper().readValue(request.getInputStream(), ClienteTO.class);
 		
 		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(credentials.getEmail(), credentials.getSenha(), Collections.emptyList());
 		
